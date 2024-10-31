@@ -58,7 +58,7 @@ def generate_keypair(p, q):
         raise ValueError('p and q cannot be equal')
     ###################################your code goes here#####################################
     n=p*q
-    eulers_totient=(p-1)(q-1)
+    eulers_totient=(p-1)*(q-1)
     d=0
     e=random.randrange(2, eulers_totient, 1)
     factors = prime_factors(n)

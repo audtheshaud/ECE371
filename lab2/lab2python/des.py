@@ -236,11 +236,20 @@ class des():
     def substitute(self, d_e):#Substitute bytes using SBOX
         subblocks = nsplit(d_e, 6)#Split bit array into sublist of 6 bits
         ###################################your code goes here###################################
+    # For each 6-bit subblock, apply the corresponding S-box
+        result = []
+        round = 0
+        for block in subblocks:
+            # Use compute_s_box on the current 6-bit subblock
+            sbox_output = self.compute_s_box(block,round)
+            # Append the result to the main result list
+            result.extend(sbox_output)
+            round += 1
         #for each 6 bit subblock you need to apply the corresponding s box (using the compute_s_box function) and save the result in result value
         # result is a list of integer values 1 or 0
         #the following code is wrong and needs to be replaced
-        s=math.floor(random.random()*2)
-        result = [s, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        #s=math.floor(random.random()*2)
+        #result = [s, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         return result
                 
     def permut(self, block, table):#Permut the given block using the given table (so generic method)
@@ -286,9 +295,13 @@ class des():
             return self.run(key, text, DECRYPT, padding)
     def compute_s_box(self,block,round):
         ###################################your code goes here###################################
+        row = block[0] + block[-1] #find row from bits
+        column = sum(block[1:5]) #find column from bits
+        sblock = S_BOX[round] #get correct sbox according to the round
+        boxvalue = sblock[row][column] #get box value from the sblock using row and column
+        bin = binvalue(boxvalue,4) #bin it to 4 bits
         # compute the corresponding row and column in the s box and choose the correct s box based on round
         # the input block is a list of integers for 1 or 0  e.g. block=[1,1,0,0,0,0,0]
         #return a string of 4 bits e.g. '1111' as the output, the binvalue() function is helpful
-        bin='1111'
         return bin
 
