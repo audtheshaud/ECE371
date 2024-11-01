@@ -8,4 +8,4 @@ Using two adjecent memory spaces of 9 memory addresses for student ID numbers, s
 be shared. ex: Getting rid of a NULL terminator '\0' in C using a scanf() command without the "%9s" limiter.
 
 # Lab2: RSA and DES Demonstration
-implementing RSA to encrypt a DES key and using it to encrypt and decrypt an image.
+Implementing RSA to encrypt a DES key and using that encrypted key to encrypt and decrypt an image via DES (The Linux Penguin, penguin.jpg)
