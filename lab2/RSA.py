@@ -1,8 +1,4 @@
-
-import random
-
-
-#fnction for finding gcd of two numbers using euclidean algorithm
+#function for finding gcd of two numbers using euclidean algorithm
 def gcd(a, b):
     while b != 0:
         a, b = b, a % b
