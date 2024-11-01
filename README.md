@@ -6,3 +6,6 @@ This code is written in a different of languuges such as: Python, C, .... (To be
 # Lab1: Buffer Overflow Demonstration
 Using two adjecent memory spaces of 9 memory addresses for student ID numbers, show how buffer overflow can show you data that was not intended to 
 be shared. ex: Getting rid of a NULL terminator '\0' in C using a scanf() command without the "%9s" limiter.
+
+# Lab2: RSA and DES Demonstration
+implementing RSA to encrypt a DES key and using it to encrypt and decrypt an image.
