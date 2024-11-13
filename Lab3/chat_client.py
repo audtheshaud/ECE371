@@ -1,10 +1,9 @@
-import pandas
 import sys
 from socket import socket, AF_INET, SOCK_DGRAM, gethostbyname
 from RSA import generate_keypair, encrypt, decrypt
 
-
-SERVER_IP = gethostbyname("AidanEOS")
+SERVER_IP = gethostbyname("AidanEOS")  # Aidans laptop hostname
+# SERVER_IP = gethostbyname("insertname") # Adi's laptop hostname
 PORT_NUMBER = 5000
 SIZE = 1024
 print(
@@ -18,13 +17,16 @@ message = "hello"
 
 # first generate the keypair
 # get these two numbers from the excel file
-p = 1297273
-q = 1297651
+# for seat 5B:  p - 1297211	q - 1297601
+
+
+p = 1297211
+q = 1297601
 ###################################your code goes here#####################################
 # generate public and private key from the p and q values
 public, private = generate_keypair(p, q)
 
-message = "public_key: %d %d" % (public[0], public[1])
+message = "public_key: %d %d private_key: %d %d" % (public[0], public[1], private[0], private[1])
 mySocket.sendto(message.encode(), (SERVER_IP, PORT_NUMBER))
 while True:
     message = input()
@@ -33,7 +35,7 @@ while True:
     # message is a string input received from the user, encrypt it with RSA character by character and save in message_encoded
     # message encoded is a list of integer ciphertext values in string format e.g. ['23131','352135','54213513']
     # hint: encrypt each character in message using RSA and store in message_encoded
-    message_encoded = ["1", "135", "53"]
+    message_encoded = [encrypt(char, public) for char in message]  # encrypt the message
     [
         mySocket.sendto(code.encode(), (SERVER_IP, PORT_NUMBER))
         for code in message_encoded
