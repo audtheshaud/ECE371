@@ -4,7 +4,7 @@ import sys
 from socket import socket, AF_INET, SOCK_DGRAM, gethostbyname
 from RSA import generate_keypair,encrypt,decrypt
 
-SERVER_IP    = gethostbyname( 'DE1_SoC' )
+SERVER_IP    = gethostbyname( 'AidanEOS' )
 PORT_NUMBER = 5000
 SIZE = 1024
 print ("Test client sending packets to IP {0}, via port {1}\n".format(SERVER_IP, PORT_NUMBER))
@@ -19,8 +19,7 @@ q=1297651
 ###################################your code goes here#####################################
 #generate public and private key from the p and q values
 #hint: use generate_keypair() function from RSA.py
-public=[0,0]
-private=[0,0]
+public, private = generate_keypair(p, q)
 
 message=('public_key: %d %d' % (public[0], public[1]))
 mySocket.sendto(message.encode(),(SERVER_IP,PORT_NUMBER))

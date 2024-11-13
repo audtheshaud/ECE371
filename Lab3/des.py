@@ -1,4 +1,5 @@
-
+import random
+import math
 #Initial permut matrix for the datas
 PI = [58, 50, 42, 34, 26, 18, 10, 2,
       60, 52, 44, 36, 28, 20, 12, 4,
@@ -237,15 +238,19 @@ class des():
         ###################################your code goes here###################################
         #for each 6 bit subblock you need to apply the corresponding s box (using the compute_s_box function) and save the result in result value
         # result is a list of integer values 1 or 0
-        result = [1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1]
+        result = []
+        round = 0
+        for block in subblocks:
+            # Use compute_s_box on the current 6-bit subblock
+            sbox_output = self.compute_s_box(block,round)
+            # Append the result to the main result list
+            result.extend(sbox_output)
+            round += 1
+        result = string_to_bit_array(result)
         return result
-        
+                
     def permut(self, block, table):#Permut the given block using the given table (so generic method)
-        ###################################your code goes here###################################
-        #permute the block using the table! the table will be either PI or CP_1 or CP_2 (found in the beginning of this file!)
-        #block is a bit array in integers [1,0,1,...], the output has the same format as block but with a permutation of the members
-        return block
-        
+        return [block[x] for x in range (len(table))]
     
     def expand(self, block, table):#Do the exact same thing than permut but for more clarity has been renamed
         return [block[x-1] for x in table]
@@ -290,5 +295,13 @@ class des():
         # compute the corresponding row and column in the s box and choose the correct s box based on round
         # the input block is a list of integers for 1 or 0  e.g. block=[1,1,0,0,0,0,0]
         #return a string of 4 bits e.g. '1111' as the output, the binvalue() function is helpful
-        bin='1111'
+        row = (block[0] << 1) | block[5] #find row from bits
+        column = block[1] << 3 | block[2] << 2 | block[3] << 1 | block[4] #find column from bits
+        sblock = S_BOX[round] #get correct sbox according to the round
+        boxvalue = sblock[row][column] #get box value from the sblock using row and column
+        bin = binvalue(boxvalue,4) #bin it to 4
+        # compute the corresponding row and column in the s box and choose the correct s box based on round
+        # the input block is a list of integers for 1 or 0  e.g. block=[1,1,0,0,0,0,0]
+        #return a string of 4 bits e.g. '1111' as the output, the binvalue() function is helpful
         return bin
+

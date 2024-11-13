@@ -5,7 +5,7 @@ from RSA import decrypt
 PORT_NUMBER = 5000
 SIZE = 1024
 
-hostName = gethostbyname( 'DE1_SoC' )
+hostName = gethostbyname( 'AidanEOS' )
 #hostName = gethostbyname( 'DESKTOP-A30LB1P' )
 
 mySocket = socket( AF_INET, SOCK_DGRAM )
