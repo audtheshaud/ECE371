@@ -31,7 +31,7 @@ while True:
         print(str(cipher) + ":")
         ###################################your code goes here#####################################
         # data_decoded is the decoded character based on the received cipher, calculate it using functions in RSA.py
-        data_decoded = decrypt(private_key, cipher)
+        data_decoded = decrypt(private_key, cipher) # decrypt text
         print(data_decoded)
         # python2: print data ,
 sys.ext()
