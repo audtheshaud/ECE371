@@ -41,7 +41,7 @@ mySocket.sendto(message.encode(), (SERVER_IP, PORT_NUMBER))
 ###################################your code goes here#####################################
 # encode the DES key with RSA and save in DES_encoded, the value below is just an example
 des_encoded = []
-for char in des_key:
+for char in des_key:  # encode each char in des_key
     encrypted_char = str(encrypt(public, char))
     des_encoded.append(encrypted_char)
 
@@ -49,7 +49,7 @@ for char in des_key:
 # des_encoded = ["2313", "3231", "532515", "542515", "5135151", "31413", "15315", "14314"]
 [mySocket.sendto(code.encode(), (SERVER_IP, PORT_NUMBER)) for code in des_encoded]
 # read image, encode, send the encoded image binary file
-file = open(r"Lab3/penguin.jpg", "rb") #relative path, need to update
+file = open(r"Lab3/penguin.jpg", "rb")  # relative path, need to update
 data = file.read()
 file.close()
 ###################################your code goes here#####################################

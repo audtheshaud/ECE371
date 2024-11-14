@@ -6,7 +6,7 @@ from RSA import decrypt
 PORT_NUMBER = 5000
 SIZE = 1024
 
-hostName = gethostbyname("AidanEOS") # Aidans laptop hostname
+hostName = gethostbyname("AidanEOS")  # Aidans laptop hostname
 # hostName = gethostbyname("insertname") # Adi's laptop hostname
 # hostName = gethostbyname( 'DESKTOP-A30LB1P' )
 
@@ -21,9 +21,11 @@ while True:
     if data.find("public_key") != -1:  # client has sent their public key\
         ###################################your code goes here#####################################
         # retrieve public key and private key from the received message (message is a string!)
-        keys = re.search(r"public_key: (\d+) (\d+) private_key: (\d+) (\d+)", data) #use regex to find message of key
+        keys = re.search(
+            r"public_key: (\d+) (\d+) private_key: (\d+) (\d+)", data
+        )  # use regex to find message of key
         public_key_e = int(keys.group(1))
-        public_key_n = int(keys.group(2)) # extract private and public keys
+        public_key_n = int(keys.group(2))  # extract private and public keys
         private_key = (int(keys.group(3)), int(keys.group(4)))
         print("public key is : %d, %d" % (public_key_e, public_key_n))
     else:
@@ -31,7 +33,7 @@ while True:
         print(str(cipher) + ":")
         ###################################your code goes here#####################################
         # data_decoded is the decoded character based on the received cipher, calculate it using functions in RSA.py
-        data_decoded = decrypt(private_key, cipher) # decrypt text
+        data_decoded = decrypt(private_key, cipher)  # decrypt text
         print(data_decoded)
         # python2: print data ,
 sys.ext()

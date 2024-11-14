@@ -56,15 +56,15 @@ while True:
         # the final output should be saved in a byte array called rr_byte
 
         # code taken from ECE371/lab2/main.py and modified with des_key_decoded = des_key and r = data
-        decoder = des.des()
+        decoder = des.des()  # set decoder to des.des()
         des_key_decoded_str = ""
-        for i in des_key:
+        for i in des_key:  # convert des_key to string
             des_key_decoded_str = des_key_decoded_str + str(i)
-        rr = decoder.decrypt(
+        rr = decoder.decrypt(  # decrypt without cipher block chaining
             des_key, data, cbc=False
         )  # this is in string  format, must convert to byte format
         rr_byte = bytearray()
-        for x in rr:
+        for x in rr:  #convert to ASCII then to bytes
             rr_byte += bytes([ord(x)])
         # write to file to make sure it is okay
         file2 = open(r"penguin_decrypted.jpg", "wb")
