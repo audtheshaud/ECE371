@@ -67,7 +67,7 @@ while True:
         for x in rr:  #convert to ASCII then to bytes
             rr_byte += bytes([ord(x)])
         # write to file to make sure it is okay
-        file2 = open(r"./lab3/penguin_decrypted.jpg", "wb")
+        file2 = open(r"Lab3/penguin_decrypted.jpg", "wb")
         file2.write(bytes(rr_byte))
         file2.close()
         print("decypting image completed")
