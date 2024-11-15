@@ -4,9 +4,9 @@ from socket import socket, AF_INET, SOCK_DGRAM, gethostbyname
 from RSA import generate_keypair, encrypt, decrypt
 import struct
 
-
+SERVER_IP = gethostbyname("192.168.1.10")  # Alterra hosting
 # SERVER_IP = gethostbyname("DE1_SoC")
-SERVER_IP = gethostbyname("AidanEOS")
+# SERVER_IP = gethostbyname("AidanEOS")
 PORT_NUMBER = 5000
 SIZE = 1024
 des_key = "secret_k"
