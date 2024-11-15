@@ -6,7 +6,7 @@ from RSA import decrypt
 PORT_NUMBER = 5000
 SIZE = 1024
 
-hostName = gethostbyname("AidanEOS")  # Aidans laptop hostname
+hostName = gethostbyname("AidanEOS")  # adi's laptop hostname
 # hostName = gethostbyname("insertname") # Adi's laptop hostname
 # hostName = gethostbyname( 'DESKTOP-A30LB1P' )
 
