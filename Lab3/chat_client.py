@@ -2,7 +2,9 @@ import sys
 from socket import socket, AF_INET, SOCK_DGRAM, gethostbyname
 from RSA import generate_keypair, encrypt, decrypt
 
-SERVER_IP = gethostbyname("AidanEOS")  # Aidans laptop hostname
+
+SERVER_IP = gethostbyname("192.168.1.10")  # Alterra hosting
+# SERVER_IP = gethostbyname("AidanEOS")  # Aidans laptop hostname
 # SERVER_IP = gethostbyname("insertname") # Adi's laptop hostname
 
 PORT_NUMBER = 5000

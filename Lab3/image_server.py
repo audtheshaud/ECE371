@@ -11,7 +11,9 @@ SIZE = 8192
 
 # hostName = gethostbyname( '192.168.1.3' )
 # hostName = gethostbyname("DE1_SoC")
-hostName = gethostbyname("AidanEOS")
+# hostName = gethostbyname("AidanEOS")
+hostName = gethostbyname("192.168.1.10")
+
 
 mySocket = socket(AF_INET, SOCK_DGRAM)
 mySocket.bind((hostName, PORT_NUMBER))
@@ -64,7 +66,7 @@ while True:
             des_key, data, cbc=False
         )  # this is in string  format, must convert to byte format
         rr_byte = bytearray()
-        for x in rr:  #convert to ASCII then to bytes
+        for x in rr:  # convert to ASCII then to bytes
             rr_byte += bytes([ord(x)])
         # write to file to make sure it is okay
         file2 = open(r"Lab3/penguin_decrypted.jpg", "wb")

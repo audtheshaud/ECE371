@@ -6,9 +6,8 @@ from RSA import decrypt
 PORT_NUMBER = 5000
 SIZE = 1024
 
-hostName = gethostbyname("AidanEOS")  # Aidans laptop hostname
-# hostName = gethostbyname("insertname") # Adi's laptop hostname
-# hostName = gethostbyname( 'DESKTOP-A30LB1P' )
+# hostName = gethostbyname("AidanEOS")  # adi's laptop hostname
+hostName = gethostbyname("192.168.1.10")  # alterra hosting
 
 mySocket = socket(AF_INET, SOCK_DGRAM)
 mySocket.bind((hostName, PORT_NUMBER))
