@@ -34,7 +34,11 @@ def run_test(numbers):
 
     return p_value, runs, expected_runs, z
 
-#sample_rand = generate_rand(500)
+random.seed(42) #seed for prng
+sample_rand = generate_rand(500) #test with prng
+# sample_rand = ""
+# for i in range(250): #test with 1010.....10
+#     sample_rand += "10"
 #numbers collected from altera
 true_rand = ["0000110100", "0000001110", "1010110011", "1110100011", "1010110011", "0111011011", "0101010011", "0000111011", "0101110011", "0101111111"]
 total_rand = ""
@@ -43,15 +47,16 @@ total_rand = ""
 for string in true_rand:
     total_rand += string 
 
-print(total_rand)
 p_value, runs, expected_runs, z = run_test(total_rand)
+#p_value, runs, expected_runs, z = run_test(sample_rand)
+
 
 print(f"Runs: {runs}")
 print(f"Expected Runs: {expected_runs:.2f}")
 print(f"Z-Statistic: {z:.3f}")
 print(f"P-Value: {p_value:.3f}")
 
-alpha = .5
+alpha = .01
 
 if p_value < alpha:
     print("reject null hypothesis: sequence not random")
