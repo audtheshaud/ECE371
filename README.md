@@ -14,5 +14,5 @@ implementing RSA to encrypt a DES key and using it to encrypt and decrypt an ima
 using RSA and DES to achieve 1 way encrypted chat between 2 machines
 
 # Lab4: Random Number generation implemted using Verilog and VHDL
-using verilog we implemented a psuedo-random number generator that was verfied through Intel Quartus Model Sim v16.0
-using vhdl we implemented a true-random number generator that was verfied on the DE1-SoC board
+* using verilog we implemented a psuedo-random number generator that was verfied through Intel Quartus Model Sim v16.0
+* using vhdl we implemented a true-random number generator that was verfied on the DE1-SoC board
