@@ -19,7 +19,8 @@ entity RO_TRNG is
 	   -- reset is set to pin_AA14 which is push-button[0]
 	   sample: in std_logic; -- Controls the random output of the Ring Oscillators
 	   -- sample is set to pin_AA15 which is push-button[1]
-		clk : in  std_logic); -- Set to pin_AF14 A.K.A CLOCK_50
+		clk : in  std_logic; -- Set to pin_AF14 A.K.A CLOCK_50
+		reset2 : in std_logic);
 end entity RO_TRNG;
 
 architecture Behavioral of RO_TRNG is
@@ -53,7 +54,7 @@ begin
   
   process (clk_int,ring,reset) begin
   if reset='0' then -- If the reset signal is low
-	  ring <= "100101101011011101001"; -- Set ring to the original seed
+	  ring <= "100101101011011101001"; -- Set ring to the original seed 100101101011011101001
   else
 	  if rising_edge(clk_int) then -- During the rising edge of the clock
 		  for i in ring'range loop -- For each bit in ring
@@ -68,8 +69,8 @@ begin
   end process;
   
     process (clk,ring,reset) begin
-  if reset='0' then -- If the reset signal is low
-	  ring2 <= "110101000110011101001"; -- Set ring2 to the original seed
+  if reset2 ='0' then -- If the reset signal is low
+	  ring2 <= "110101000110011101001"; -- Set ring2 to the original seed 110101000110011101001
   else
 	  if rising_edge(clk) then -- During the rising edge of the clock
 		  for i in ring2'range loop -- For each bit in ring
